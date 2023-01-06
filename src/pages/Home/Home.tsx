@@ -1,23 +1,17 @@
-import { Footer } from "@/components/Footer";
-import { Layout } from "@/components/Layout";
-import { Navbar } from "@/components/Navbar";
-import { Button, Box, Grid, ListItem, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
-
-import ProductCarousel from "./components/ProductCarousel/ProductCarousel";
-import { ProductDetail } from "./components/ProductDetail";
-import { ProductFilter } from "./components/ProductFilter";
-import { ProductList } from "./components/ProductList";
-import { SmartwatchCarousel } from "./components/SmartwatchCarousel";
-
-import styles from "@/styles/Layout.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { AppStore } from "@/redux/store";
 import { updateStockBrand } from "@/redux/states/brand";
-import { ProductSearch } from "./components/ProductSearch";
-import { Product } from "@/interface/product";
+import { Box, Grid, Typography, CardMedia } from "@mui/material";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+
+import { Layout } from "@/components/Layout";
+import { ProductDetail } from "./components/ProductDetail";
+import { ProductFilter } from "./components/ProductFilter";
+import { ProductSearch } from "./components/ProductSearch";
+
+import styles from "@/styles/Layout.module.css";
 
 export interface HomeInterface {}
 
@@ -60,10 +54,57 @@ const Home: React.FC<HomeInterface> = () => {
         spacing={2}
         sx={{ marginTop: "20px" }}
       >
-        <Grid item sm={6} md={6} xs={12} sx={{ textAlign: "left" }}>
-          <Box>
-            <Typography variant="h4" fontWeight="bold">
-              Productos destacados
+        <Grid
+          item
+          sm={6}
+          md={6}
+          xs={12}
+          sx={{ textAlign: "left", marginTop: { xs: "60px", md: "0px" } }}
+        >
+          <Typography variant="h5" fontWeight="bold">
+            Productos destacados
+            <Typography
+              component="span"
+              color="primary"
+              sx={{ fontSize: "1.25rem", fontWeight: "700" }}
+            >
+              .
+            </Typography>
+          </Typography>
+          <Typography>Estos son los productos con mas pedidos!</Typography>
+          <Box sx={{ paddingTop: "30px" }}>
+            <Carousel
+              showArrows={false}
+              autoPlay={true}
+              interval={3000}
+              infiniteLoop={true}
+              showThumbs={false}
+            >
+              <CardMedia
+                component="img"
+                alt="haweiPortada"
+                image="./assets/images/haweiPortada.jpg"
+                sx={{ padding: "1em 1em 0 1em" }}
+              />
+              <CardMedia
+                component="img"
+                alt="samsungPortada"
+                image="./assets/images/samsungPortada.jpg"
+                sx={{ padding: "1em 1em 0 1em" }}
+              />
+              <CardMedia
+                component="img"
+                alt="samsungPortada2"
+                image="./assets/images/samsungPortada2.jpg"
+                sx={{ padding: "1em 1em 0 1em" }}
+              />
+            </Carousel>
+          </Box>
+        </Grid>
+        <Grid item sm={6} md={6} xs={12}>
+          <Box sx={{ textAlign: "left", marginTop: { xs: "60px", md: "0px" } }}>
+            <Typography variant="h5" fontWeight="bold">
+              Ofertas de hoy
               <Typography
                 component="span"
                 color="primary"
@@ -72,39 +113,9 @@ const Home: React.FC<HomeInterface> = () => {
                 .
               </Typography>
             </Typography>
-            <Typography>Estos son los productos con mas pedidos!</Typography>
-            <Box sx={{ paddingTop: "30px" }}>
-              <Carousel
-                showArrows={false}
-                autoPlay={true}
-                interval={3000}
-                infiniteLoop={true}
-                showThumbs={false}
-              >
-                <img src="./assets/images/haweiPortada.jpg" />
-                <img src="./assets/images/samsungPortada.jpg" />
-                <img src="./assets/images/samsungPortada2.jpg" />
-              </Carousel>
-            </Box>
           </Box>
-        </Grid>
-        <Grid item sm={6} md={6} xs={12}>
-          <Box>
-            <Box sx={{ textAlign: "left" }}>
-              <Typography variant="h4" fontWeight="bold">
-                Ofertas de hoy
-                <Typography
-                  component="span"
-                  color="primary"
-                  sx={{ fontSize: "1.25rem", fontWeight: "700" }}
-                >
-                  .
-                </Typography>
-              </Typography>
-            </Box>
-            <Box sx={{ paddingTop: "20px" }}>
-              <ProductDetail type="discountList" />
-            </Box>
+          <Box sx={{ paddingTop: "20px" }}>
+            <ProductDetail type="discountList" />
           </Box>
         </Grid>
 
@@ -113,7 +124,7 @@ const Home: React.FC<HomeInterface> = () => {
           sm={12}
           md={12}
           xs={12}
-          sx={{ justifyContent: "center", padding: "20px" }}
+          sx={{ justifyContent: "center", padding: { xs: "10px", md: "20px" } }}
         >
           <Typography variant="h4" fontWeight="bold">
             Smartphones
@@ -132,8 +143,9 @@ const Home: React.FC<HomeInterface> = () => {
               xs={12}
               sm={2}
               sx={{
-                display: { xs: "flex", sm: "block" },
+                display: { xs: "block", sm: "block" },
                 justifyContent: "right",
+                padding: { xs: "15px", sm: "0px" },
               }}
             >
               <ProductFilter title="Marcas" brands={stateBrand} />
@@ -142,13 +154,13 @@ const Home: React.FC<HomeInterface> = () => {
             <Grid item xs={12} sm={10}>
               <ProductSearch />
               <Box
-                mt={5}
                 sx={{
                   display: "flex",
                   borderTop: "1px solid silver",
                   borderBottom: "1px solid silver",
                   justifyContent: "right",
                   padding: "10px",
+                  marginTop: { xs: "10px", md: "20px" },
                 }}
               >
                 <Typography component="span" display="flex">
@@ -156,11 +168,19 @@ const Home: React.FC<HomeInterface> = () => {
                   Items encontrados
                 </Typography>
               </Box>
-
-              <ProductList />
+              <Box
+                sx={{
+                  flexWrap: "wrap",
+                  display: "flex",
+                  justifyContent: "center",
+                }}
+              >
+                <ProductDetail type="activeList" />
+              </Box>
             </Grid>
           </Grid>
         </Grid>
+
         <Grid
           item
           sm={12}
@@ -183,11 +203,21 @@ const Home: React.FC<HomeInterface> = () => {
           </Typography>
           <hr></hr>
           <Grid container sx={{ marginTop: "90px", marginBottom: "90px" }}>
-            <Grid item xs={6}>
-              <img src="./assets/images/smartwatch-02.jpg" height="200" />
+            <Grid item xs={12} md={6}>
+              <CardMedia
+                component="img"
+                alt="imgSmartwatch01"
+                image="./assets/images/smartwatch-02.jpg"
+                sx={{ padding: "1em 1em 0 1em" }}
+              />
             </Grid>
-            <Grid item xs={6}>
-              <img src="./assets/images/smartwatch-03.jpg" height="200" />
+            <Grid item xs={12} md={6}>
+              <CardMedia
+                component="img"
+                alt="imgSmartwatch02"
+                image="./assets/images/smartwatch-03.jpg"
+                sx={{ padding: "1em 1em 0 1em" }}
+              />
             </Grid>
           </Grid>
         </Grid>

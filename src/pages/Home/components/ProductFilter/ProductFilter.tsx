@@ -1,13 +1,13 @@
-import { Brand } from "@/interface/brand";
+import React from "react";
+import { useDispatch } from "react-redux";
 import {
   allProductActive,
   availableStock,
   filterBrand,
 } from "@/redux/states/products";
-import { AppStore } from "@/redux/store";
 import { Grid, Typography } from "@mui/material";
-import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { Brand } from "@/interface/brand";
+
 export interface BrandFilterInterface {
   title: string;
   brands: Brand[];

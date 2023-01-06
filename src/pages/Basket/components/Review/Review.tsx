@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import { AppStore } from "@/redux/store";
-import { Box } from "@mui/system";
-import { Button, Typography } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import { Product } from "@/interface/product";
 
 export interface ReviewInterface {
