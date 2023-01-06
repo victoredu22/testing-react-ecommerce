@@ -1,12 +1,13 @@
-import { Box, Button, Grid, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import styles from "@/styles/Product.module.css";
-
-import LocalShippingIcon from "@mui/icons-material/LocalShipping";
-import StarIcon from "@mui/icons-material/Star";
-import { ButtonShopping } from "@/components/ButtonShopping";
 import { AppStore } from "@/redux/store";
 import { useSelector } from "react-redux";
+import { Box, CardMedia, Grid, Typography } from "@mui/material";
+import LocalShippingIcon from "@mui/icons-material/LocalShipping";
+import StarIcon from "@mui/icons-material/Star";
+
+import styles from "@/styles/Product.module.css";
+
+import { ButtonShopping } from "@/components/ButtonShopping";
 import { Product } from "@/interface/product";
 
 export interface OfferDayInterface {
@@ -50,7 +51,7 @@ const ProductDetail: React.FC<OfferDayInterface> = ({ type }) => {
                       md: "350px",
                       sm: "450px",
                     },
-              margin: "10px",
+              margin: { xs: "30px 0px 20px 5px", md: "10px" },
             }}
           >
             <Grid
@@ -59,7 +60,12 @@ const ProductDetail: React.FC<OfferDayInterface> = ({ type }) => {
               sx={{ margin: "auto" }}
             >
               {product.picture.src != undefined && (
-                <img width="" src={product.picture.src} />
+                <CardMedia
+                  component="img"
+                  alt={product.picture.alt}
+                  image={product.picture.src}
+                  sx={{ padding: "1em 1em 0 1em" }}
+                />
               )}
             </Grid>
             <Grid item xs={type === "activeList" ? 12 : 9} textAlign="left">
