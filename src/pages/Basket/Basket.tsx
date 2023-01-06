@@ -23,7 +23,6 @@ const Basket: React.FC<BasketInterface> = () => {
           marginTop: "100px",
           padding: { xs: "4% 24px 0px 6%", md: "0px 80px  0px  120px " },
         }}
-        alignContent={"center"}
       >
         {stateCart.length === 0 ? (
           <Grid item xs={12} style={{ textAlign: "center" }}>
@@ -31,7 +30,6 @@ const Basket: React.FC<BasketInterface> = () => {
               sx={{
                 display: "flex",
                 flexWrap: "wrap",
-
                 marginTop: "5%",
               }}
               justifyContent="center"
