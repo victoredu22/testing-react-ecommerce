@@ -9,7 +9,12 @@ const Footer: React.FC<FooterInterface> = () => {
   return (
     <>
       <Grid container sx={{ padding: "80px" }}>
-        <Grid item xs={3} sx={{ textAlign: "center" }}>
+        <Grid
+          item
+          md={3}
+          xs={12}
+          sx={{ textAlign: "center", paddingBottom: "20px" }}
+        >
           <Typography variant="h6" fontWeight="bold">
             Productos
           </Typography>
@@ -17,7 +22,12 @@ const Footer: React.FC<FooterInterface> = () => {
           <Typography>Tarjetas de débito</Typography>
           <Typography>credito hipotecario</Typography>
         </Grid>
-        <Grid item xs={3} sx={{ textAlign: "center" }}>
+        <Grid
+          item
+          md={3}
+          xs={12}
+          sx={{ textAlign: "center", paddingBottom: "20px" }}
+        >
           <Typography variant="h6" fontWeight="bold">
             Productos
           </Typography>
@@ -25,7 +35,12 @@ const Footer: React.FC<FooterInterface> = () => {
           <Typography>Tarjetas de débito</Typography>
           <Typography>credito hipotecario</Typography>
         </Grid>
-        <Grid item xs={3} sx={{ textAlign: "center" }}>
+        <Grid
+          item
+          md={3}
+          xs={12}
+          sx={{ textAlign: "center", paddingBottom: "20px" }}
+        >
           <Typography variant="h6" fontWeight="bold">
             Productos
           </Typography>
@@ -33,7 +48,12 @@ const Footer: React.FC<FooterInterface> = () => {
           <Typography>Tarjetas de débito</Typography>
           <Typography>credito hipotecario</Typography>
         </Grid>
-        <Grid item xs={3} sx={{ textAlign: "center" }}>
+        <Grid
+          item
+          md={3}
+          xs={12}
+          sx={{ textAlign: "center", paddingBottom: "20px" }}
+        >
           <Typography variant="h6" fontWeight="bold">
             Carrito Compras
           </Typography>
@@ -48,11 +68,9 @@ const Footer: React.FC<FooterInterface> = () => {
         sx={{
           position: "relative",
           width: "100%",
-          left: "0",
-          bottom: "0",
-          padding: "0% 10% 5% 10%",
+          paddingLeft: { xs: "10px", md: "80px" },
+          paddingRight: { xs: "10px", md: "80px" },
         }}
-        pt={5}
       >
         <Grid item xs={6} sx={{ textAlign: "left" }}>
           <Typography>

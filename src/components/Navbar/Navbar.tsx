@@ -63,7 +63,12 @@ const Navbar: React.FC<NavbarInterface> = () => {
               }}
             >
               <ShoppingCartIcon sx={{ fontSize: "20px" }} />
-              <Typography sx={{ color: "#212529" }}>
+              <Typography
+                sx={{
+                  color: "#212529",
+                  display: { xs: "none", display: "block" },
+                }}
+              >
                 Mi carrito ({cartLength})
               </Typography>
             </Box>
@@ -79,7 +84,11 @@ const Navbar: React.FC<NavbarInterface> = () => {
             }}
           >
             <PersonIcon sx={{ fontSize: "20px" }} />
-            <Typography sx={{ color: "#212529" }}>Iniciar sesion</Typography>
+            <Typography
+              sx={{ color: "#212529", display: { xs: "none", md: "block" } }}
+            >
+              Iniciar sesion
+            </Typography>
           </Box>
         </Toolbar>
       </AppBar>
