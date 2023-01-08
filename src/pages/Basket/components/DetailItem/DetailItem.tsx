@@ -19,7 +19,7 @@ const DetailsItem: React.FC<DetailsItemInterface> = ({ product }) => {
   const stateCart = useSelector((store: AppStore) => store.cart);
 
   const handleStock = (type: string, product: Product) => {
-    dispatch(updateStock({ type, idProduct: product.id }));
+    dispatch(updateStock({ type, id: product.id }));
   };
 
   //ELIMINAR PRODUCTO EN LOCALSTORAGE

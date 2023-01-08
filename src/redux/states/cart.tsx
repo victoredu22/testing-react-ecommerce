@@ -34,17 +34,18 @@ export const cartSlice = createSlice({
     updateStock: (state, action) => {
       return action.payload.type === "add"
         ? current(state).map((product) =>
-            product.id === action.payload.idProduct
+            product.id === action.payload.id
               ? { ...product, inCart: product.inCart + 1 }
               : { ...product }
           )
         : current(state).map((product) =>
-            product.id === action.payload.idProduct
+            product.id === action.payload.id
               ? { ...product, inCart: product.inCart - 1 }
               : { ...product }
           );
     },
     deleteCart: (state, action) => {
+      console.log(action, "gege");
       return current(state).filter((item) => item.id != action.payload);
     },
   },
