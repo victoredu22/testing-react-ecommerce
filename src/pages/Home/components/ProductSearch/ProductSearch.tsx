@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { searchProduct } from "@/redux/states/products";
 
-import { useForm } from "@/hook/useForm";
+import { searchProduct } from "../../../../redux/states/products";
+
+import { useForm } from "../../../../hook/useForm";
 import { TextField } from "@mui/material";
 export interface ProductSearchInterface {}
 
@@ -20,12 +21,13 @@ const ProductSearch: React.FC<ProductSearchInterface> = () => {
   ) => void;
   const values = formValues as formValues;
 
-  useEffect(() => {
+  /*   useEffect(() => {
     dispatch(searchProduct(values.searchText.toLocaleLowerCase()));
-  }, [values]);
+  }, [values]); */
 
   return (
     <>
+      <p>holaaa</p>
       <TextField
         fullWidth
         name="searchText"

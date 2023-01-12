@@ -38,7 +38,7 @@ describe("Pruebas en brand redux", () => {
       stock: 0,
     },
   ];
-  it("should handle increment", () => {
+  it("agregar datos iniciales", () => {
     expect(brandReducer(undefined, { type: "unknown" })).toEqual(initialState);
   });
 

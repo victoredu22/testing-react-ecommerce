@@ -7,6 +7,7 @@ export interface ReviewInterface {
 }
 
 const Review: React.FC<ReviewInterface> = ({ cart }) => {
+  console.log(cart);
   const [price, setPrice] = useState<number>(0);
 
   useEffect(() => {

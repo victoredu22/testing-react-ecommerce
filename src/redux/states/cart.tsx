@@ -45,7 +45,6 @@ export const cartSlice = createSlice({
           );
     },
     deleteCart: (state, action) => {
-      console.log(action, "gege");
       return current(state).filter((item) => item.id != action.payload);
     },
   },

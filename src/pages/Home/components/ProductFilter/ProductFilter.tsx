@@ -18,11 +18,11 @@ const ProductFilter: React.FC<BrandFilterInterface> = ({ title, brands }) => {
   const clearFilter = () => {
     dispatch(allProductActive());
   };
-  const handleFilter = (idBrand: any) => {
+  const handleFilter = (idAction: any) => {
     if (title === "Disponibilidad") {
-      dispatch(availableStock(idBrand));
+      dispatch(availableStock({ type: idAction }));
     } else if (title === "Marcas") {
-      dispatch(filterBrand(idBrand));
+      dispatch(filterBrand(idAction));
     }
   };
 
