@@ -1,7 +1,7 @@
 import React, { Children } from "react";
 import theme from "@/global/MainTheme";
 import { Button, Checkbox, Grid } from "@mui/material";
-import styles from "@/styles/Layout.module.css";
+/* import styles from "@/styles/Layout.module.css"; */
 import { Navbar } from "../Navbar";
 
 import { ThemeProvider, createTheme } from "@mui/material/styles";
@@ -23,7 +23,8 @@ const Layout: React.FC<LayoutInterface> = ({
     <>
       <ThemeProvider theme={theme}>
         <Navbar />
-        <Grid className={styles.app_wrapper}>{children}</Grid>
+        {/* <Grid className={styles.app_wrapper}>{children}</Grid> */}
+        <Grid>{children}</Grid>
         <Footer />
       </ThemeProvider>
     </>

@@ -5,8 +5,8 @@ import { Box, CardMedia, Grid, Typography } from "@mui/material";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import StarIcon from "@mui/icons-material/Star";
 
-import styles from "@/styles/Product.module.css";
-
+/* import styles from "@/styles/Product.module.css";
+ */
 import { ButtonShopping } from "@/components/ButtonShopping";
 import { Product } from "@/interface/product";
 
@@ -69,13 +69,13 @@ const ProductDetail: React.FC<OfferDayInterface> = ({ type }) => {
               )}
             </Grid>
             <Grid item xs={type === "activeList" ? 12 : 9} textAlign="left">
-              <Typography className={styles.productText}>
+              <Typography>
                 {product.title}
                 <Typography component="span" color="primary">
                   .
                 </Typography>
               </Typography>
-              <Typography className={styles.productText}>
+              <Typography>
                 {" "}
                 <Typography component="span" color="primary" fontWeight="bold">
                   {product.price}
@@ -93,13 +93,11 @@ const ProductDetail: React.FC<OfferDayInterface> = ({ type }) => {
                   }}
                 >
                   <LocalShippingIcon />
-                  <Typography className={styles.productText}>
-                    Envio gratis.
-                  </Typography>
+                  <Typography>Envio gratis.</Typography>
                 </Box>
               )}
 
-              <Typography className={styles.productText}>
+              <Typography>
                 <StarIcon /> <StarIcon /> <StarIcon />
               </Typography>
               <ButtonShopping product={product} />

@@ -35,6 +35,7 @@ const ProductSearch: React.FC<ProductSearchInterface> = () => {
         onChange={handle}
         placeholder="Buscar producto"
         autoComplete="off"
+        arial-label="search"
       />
     </>
   );

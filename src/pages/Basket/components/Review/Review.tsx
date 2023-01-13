@@ -7,7 +7,6 @@ export interface ReviewInterface {
 }
 
 const Review: React.FC<ReviewInterface> = ({ cart }) => {
-  console.log(cart);
   const [price, setPrice] = useState<number>(0);
 
   useEffect(() => {
@@ -26,7 +25,9 @@ const Review: React.FC<ReviewInterface> = ({ cart }) => {
       <hr></hr>
       <Box display="flex" justifyContent="space-between" padding={1}>
         <Box>Subtotal: </Box>
-        <Box>${price} </Box>
+        <Box>
+          $<Typography>{price}</Typography>{" "}
+        </Box>
       </Box>
       <hr></hr>
       <Box display="flex" justifyContent="space-between" padding={1}>
@@ -36,7 +37,7 @@ const Review: React.FC<ReviewInterface> = ({ cart }) => {
       <hr></hr>
       <Box display="flex" justifyContent="space-between" padding={1}>
         <Typography>Total</Typography>
-        <Typography>${price}</Typography>
+        <Typography>{"$" + price}</Typography>
       </Box>
       <Button variant="contained" fullWidth>
         Ir al pago

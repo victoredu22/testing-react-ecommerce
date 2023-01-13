@@ -11,7 +11,7 @@ import { ProductDetail } from "./components/ProductDetail";
 import { ProductFilter } from "./components/ProductFilter";
 import { ProductSearch } from "./components/ProductSearch";
 
-import styles from "@/styles/Layout.module.css";
+/* import styles from "@/styles/Layout.module.css"; */
 
 export interface HomeInterface {}
 
@@ -50,7 +50,7 @@ const Home: React.FC<HomeInterface> = () => {
     <Layout>
       <Grid
         container
-        className={styles.main_container}
+        /*  className={styles.main_container} */
         spacing={2}
         sx={{ marginTop: "20px" }}
       >
