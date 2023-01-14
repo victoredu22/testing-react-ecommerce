@@ -10,6 +10,7 @@ export const productSlice = createSlice({
   initialState: ProductList,
   reducers: {
     searchProduct: (state, action) => {
+      console.log(action, "wooola");
       return current(state).map((product: Product) =>
         product.description.toLocaleLowerCase().includes(action.payload)
           ? { ...product, active: true }

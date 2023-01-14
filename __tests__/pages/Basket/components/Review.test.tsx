@@ -1,7 +1,7 @@
 import * as React from "react";
-import Review from "../../../src/pages/Basket/components/Review/Review";
+import Review from "../../../../src/pages/Basket/components/Review/Review";
 import { render, screen } from "@testing-library/react";
-import { initialState } from "../../fixture/ProductState";
+import { initialState } from "../../../fixture/ProductState";
 
 describe("pruebas en review", () => {
   it("pruebas contenido minimo en documento", () => {

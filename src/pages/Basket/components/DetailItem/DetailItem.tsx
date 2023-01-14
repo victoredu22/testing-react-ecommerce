@@ -26,8 +26,9 @@ const DetailsItem: React.FC<DetailsItemInterface> = ({ product }) => {
   useEffect(() => {
     setInCart(product.inCart);
     if (product.inCart === 0) {
-      const itemsLocal = JSON.parse(localStorage.getItem("cart") as "String");
-
+      const itemsLocal = localStorage.getItem("cart")
+        ? JSON.parse(localStorage.getItem("cart") as "String")
+        : [];
       const dataLocal = itemsLocal.filter(
         (item: Product) => item.id != product.id
       );
@@ -49,7 +50,7 @@ const DetailsItem: React.FC<DetailsItemInterface> = ({ product }) => {
 
   return (
     <>
-      {product.inCart > 0 && (
+      {/*    {product.inCart > 0 && (
         <Box
           sx={{
             display: "flex",
@@ -161,7 +162,7 @@ const DetailsItem: React.FC<DetailsItemInterface> = ({ product }) => {
             </Box>
           </Box>
         </Box>
-      )}
+      )} */}
     </>
   );
 };
