@@ -48,12 +48,7 @@ const Home: React.FC<HomeInterface> = () => {
 
   return (
     <Layout>
-      <Grid
-        container
-        /*  className={styles.main_container} */
-        spacing={2}
-        sx={{ marginTop: "20px" }}
-      >
+      <Grid container spacing={2} sx={{ marginTop: "20px" }}>
         <Grid
           item
           sm={6}
@@ -72,7 +67,7 @@ const Home: React.FC<HomeInterface> = () => {
             </Typography>
           </Typography>
           <Typography>Estos son los productos con mas pedidos!</Typography>
-          <Box sx={{ paddingTop: "30px" }}>
+          <Box sx={{ paddingTop: "30px" }} data-testid="container-carousel">
             <Carousel
               showArrows={false}
               autoPlay={true}
@@ -88,7 +83,7 @@ const Home: React.FC<HomeInterface> = () => {
               />
               <CardMedia
                 component="img"
-                alt="samsungPortada"
+                alt="samsungPortada1"
                 image="./assets/images/samsungPortada.jpg"
                 sx={{ padding: "1em 1em 0 1em" }}
               />
@@ -115,7 +110,17 @@ const Home: React.FC<HomeInterface> = () => {
             </Typography>
           </Box>
           <Box sx={{ paddingTop: "20px" }}>
-            <ProductDetail type="discountList" />
+            {stateProduct != undefined &&
+              stateProduct.map(
+                (product, key) =>
+                  product.offerDiscount && (
+                    <ProductDetail
+                      key={key}
+                      type="discountList"
+                      product={product}
+                    />
+                  )
+              )}
           </Box>
         </Grid>
 
@@ -148,8 +153,9 @@ const Home: React.FC<HomeInterface> = () => {
                 padding: { xs: "15px", sm: "0px" },
               }}
             >
-              <ProductFilter title="Marcas" brands={stateBrand} />
-              <ProductFilter title="Disponibilidad" brands={availableProduct} />
+              <ProductFilter title="Marcas" items={stateBrand} />
+
+              <ProductFilter title="Disponibilidad" items={availableProduct} />
             </Grid>
             <Grid item xs={12} sm={10}>
               <ProductSearch />
@@ -175,7 +181,17 @@ const Home: React.FC<HomeInterface> = () => {
                   justifyContent: "center",
                 }}
               >
-                <ProductDetail type="activeList" />
+                {stateProduct != undefined &&
+                  stateProduct.map(
+                    (product, key) =>
+                      product.active && (
+                        <ProductDetail
+                          key={key}
+                          type="activeList"
+                          product={product}
+                        />
+                      )
+                  )}
               </Box>
             </Grid>
           </Grid>

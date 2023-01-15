@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppStore } from "@/redux/store";
 import { Box, Button, CardMedia, Typography } from "@mui/material";
@@ -15,42 +15,39 @@ export interface DetailsItemInterface {
 
 const DetailsItem: React.FC<DetailsItemInterface> = ({ product }) => {
   const dispatch = useDispatch();
-  const [inCart, setInCart] = useState<number>(0);
+  const [inCart, setInCart] = useState<number>(product.inCart);
   const stateCart = useSelector((store: AppStore) => store.cart);
 
   const handleStock = (type: string, product: Product) => {
+    const stockIncart =
+      type === "subtract" ? product.inCart - 1 : product.inCart + 1;
+    setInCart(stockIncart);
+
     dispatch(updateStock({ type, id: product.id }));
-  };
 
-  //ELIMINAR PRODUCTO EN LOCALSTORAGE
-  useEffect(() => {
-    setInCart(product.inCart);
-    if (product.inCart === 0) {
-      const itemsLocal = localStorage.getItem("cart")
-        ? JSON.parse(localStorage.getItem("cart") as "String")
-        : [];
-      const dataLocal = itemsLocal.filter(
-        (item: Product) => item.id != product.id
-      );
-      localStorage.setItem("cart", JSON.stringify(dataLocal));
-      dispatch(deleteCart(product.id));
-      return;
-    }
-  }, [product]);
-
-  useEffect(() => {
-    if (product.inCart > 0) {
+    if (inCart > 0) {
       const dataLocal = stateCart.map((item: Product) =>
         item.id === product.id ? { ...item, inCart: inCart } : { ...item }
       );
-
       localStorage.setItem("cart", JSON.stringify(dataLocal));
+      return;
     }
-  }, [inCart]);
+
+    const itemsLocal = localStorage.getItem("cart")
+      ? JSON.parse(localStorage.getItem("cart") as "String")
+      : [];
+
+    const dataLocal = itemsLocal.filter(
+      (item: Product) => item.id != product.id
+    );
+
+    localStorage.setItem("cart", JSON.stringify(dataLocal));
+    dispatch(deleteCart(product.id));
+  };
 
   return (
     <>
-      {/*    {product.inCart > 0 && (
+      {product.inCart > 0 && (
         <Box
           sx={{
             display: "flex",
@@ -89,7 +86,7 @@ const DetailsItem: React.FC<DetailsItemInterface> = ({ product }) => {
                 {product.description}
               </Typography>
               <Typography sx={{ padding: "5px", fontSize: "1rem" }}>
-                $ {product.price}
+                $ <Typography component="span">{product.price}</Typography>
               </Typography>
               <Box
                 sx={{
@@ -127,6 +124,7 @@ const DetailsItem: React.FC<DetailsItemInterface> = ({ product }) => {
                 }}
               >
                 <Button
+                  aria-label="button-handle-subtract"
                   variant="text"
                   onClick={() => {
                     handleStock("subtract", product);
@@ -145,6 +143,7 @@ const DetailsItem: React.FC<DetailsItemInterface> = ({ product }) => {
                   {inCart}
                 </Typography>
                 <Button
+                  aria-label="button-handle-add"
                   variant="text"
                   onClick={() => {
                     handleStock("add", product);
@@ -162,7 +161,7 @@ const DetailsItem: React.FC<DetailsItemInterface> = ({ product }) => {
             </Box>
           </Box>
         </Box>
-      )} */}
+      )}
     </>
   );
 };

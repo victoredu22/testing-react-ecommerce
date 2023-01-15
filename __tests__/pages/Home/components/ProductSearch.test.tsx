@@ -1,8 +1,8 @@
 import React from "react";
 import { fireEvent, render, screen, cleanup } from "@testing-library/react";
-import { ProductSearch } from "../../../src/pages/Home/components/ProductSearch";
+import { ProductSearch } from "../../../../src/pages/Home/components/ProductSearch";
 import configureStore from "redux-mock-store";
-import { initialState } from "../../fixture/ProductState";
+import { initialState } from "../../../fixture/ProductState";
 import { Provider } from "react-redux";
 
 describe("Prueba de productSearch", () => {

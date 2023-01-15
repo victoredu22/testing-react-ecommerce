@@ -22,7 +22,7 @@ const Layout: React.FC<LayoutInterface> = ({
   return (
     <>
       <ThemeProvider theme={theme}>
-        <Navbar />
+        {/* <Navbar /> */}
         {/* <Grid className={styles.app_wrapper}>{children}</Grid> */}
         <Grid>{children}</Grid>
         <Footer />
