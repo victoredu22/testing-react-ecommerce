@@ -1,10 +1,12 @@
 import { Grid, Typography } from "@mui/material";
 import React from "react";
-export interface FooterInterface {}
 
 import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
+
+export interface FooterInterface {}
+
 const Footer: React.FC<FooterInterface> = () => {
   return (
     <>

@@ -143,7 +143,7 @@ const DetailsItem: React.FC<DetailsItemInterface> = ({ product }) => {
                   />
                 </Button>
                 <Typography sx={{ marginLeft: "10px", marginRight: "10px" }}>
-                  {inCart}
+                  {product.inCart}
                 </Typography>
                 <Button
                   aria-label="button-handle-add"

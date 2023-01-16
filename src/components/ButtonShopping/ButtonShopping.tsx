@@ -17,7 +17,7 @@ const ButtonShopping: React.FC<ButtonShoppingInterface> = (product) => {
   const stateCart = useSelector((store: AppStore) => store.cart);
 
   useEffect(() => {
-    setLocalStorage(LocalstorageTypes.CART, JSON.stringify(stateCart));
+    setLocalStorage(LocalstorageTypes.CART, stateCart);
   }, [stateCart]);
 
   const handleAddCart = () => {

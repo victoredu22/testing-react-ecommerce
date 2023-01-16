@@ -13,20 +13,11 @@ export interface LayoutInterface {
   title?: string;
 }
 
-const Layout: React.FC<LayoutInterface> = ({
-  children,
-  route,
-  title,
-}: LayoutInterface) => {
-  const label = { inputProps: { "aria-label": "Checkbox demo" } };
-
+const Layout: React.FC<LayoutInterface> = ({ children }: LayoutInterface) => {
   return (
     <>
       <ThemeProvider theme={theme}>
-        {/* <Navbar /> */}
         <Grid className={styles.app_wrapper}>{children}</Grid>
-        {/* <Grid>{children}</Grid> */}
-        {/*       <Footer /> */}
       </ThemeProvider>
     </>
   );

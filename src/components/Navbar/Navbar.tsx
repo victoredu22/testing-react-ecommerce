@@ -54,6 +54,7 @@ const Navbar: React.FC<NavbarInterface> = () => {
             style={{ color: "inherit", textDecoration: "inherit" }}
           >
             <Box
+              data-testid={`navbar-cart`}
               sx={{
                 display: "flex",
                 alignItems: "center",
@@ -66,11 +67,12 @@ const Navbar: React.FC<NavbarInterface> = () => {
               <Typography
                 sx={{
                   color: "#212529",
-                  display: { xs: "none", display: "block" },
+                  display: { xs: "none", md: "block" },
                 }}
               >
-                Mi carrito ({cartLength})
+                Mi carrito
               </Typography>
+              (<Typography component="span">{cartLength}</Typography>)
             </Box>
           </Link>
 
