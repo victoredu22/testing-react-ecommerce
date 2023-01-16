@@ -11,7 +11,7 @@ import { ProductDetail } from "./components/ProductDetail";
 import { ProductFilter } from "./components/ProductFilter";
 import { ProductSearch } from "./components/ProductSearch";
 
-import styles from "@/styles/Layout.module.css";
+import styles from "../../styles/Layout.module.css";
 
 export interface HomeInterface {}
 
@@ -72,7 +72,7 @@ const Home: React.FC<HomeInterface> = () => {
             </Typography>
           </Typography>
           <Typography>Estos son los productos con mas pedidos!</Typography>
-          <Box sx={{ paddingTop: "30px" }}>
+          <Box sx={{ paddingTop: "30px" }} data-testid="container-carousel">
             <Carousel
               showArrows={false}
               autoPlay={true}
@@ -88,7 +88,7 @@ const Home: React.FC<HomeInterface> = () => {
               />
               <CardMedia
                 component="img"
-                alt="samsungPortada"
+                alt="samsungPortada1"
                 image="./assets/images/samsungPortada.jpg"
                 sx={{ padding: "1em 1em 0 1em" }}
               />
@@ -115,7 +115,17 @@ const Home: React.FC<HomeInterface> = () => {
             </Typography>
           </Box>
           <Box sx={{ paddingTop: "20px" }}>
-            <ProductDetail type="discountList" />
+            {stateProduct != undefined &&
+              stateProduct.map(
+                (product, key) =>
+                  product.offerDiscount && (
+                    <ProductDetail
+                      key={key}
+                      type="discountList"
+                      product={product}
+                    />
+                  )
+              )}
           </Box>
         </Grid>
 
@@ -148,12 +158,14 @@ const Home: React.FC<HomeInterface> = () => {
                 padding: { xs: "15px", sm: "0px" },
               }}
             >
-              <ProductFilter title="Marcas" brands={stateBrand} />
-              <ProductFilter title="Disponibilidad" brands={availableProduct} />
+              <ProductFilter title="Marcas" items={stateBrand} />
+
+              <ProductFilter title="Disponibilidad" items={availableProduct} />
             </Grid>
             <Grid item xs={12} sm={10}>
               <ProductSearch />
               <Box
+                data-testid={`item-found-product`}
                 sx={{
                   display: "flex",
                   borderTop: "1px solid silver",
@@ -164,7 +176,9 @@ const Home: React.FC<HomeInterface> = () => {
                 }}
               >
                 <Typography component="span" display="flex">
-                  <Typography fontWeight="bold">{productSearch} </Typography>{" "}
+                  <Typography data-testid="number-product" fontWeight="bold">
+                    {productSearch}{" "}
+                  </Typography>{" "}
                   Items encontrados
                 </Typography>
               </Box>
@@ -175,7 +189,17 @@ const Home: React.FC<HomeInterface> = () => {
                   justifyContent: "center",
                 }}
               >
-                <ProductDetail type="activeList" />
+                {stateProduct != undefined &&
+                  stateProduct.map(
+                    (product, key) =>
+                      product.active && (
+                        <ProductDetail
+                          key={key}
+                          type="activeList"
+                          product={product}
+                        />
+                      )
+                  )}
               </Box>
             </Grid>
           </Grid>

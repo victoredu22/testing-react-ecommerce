@@ -1,7 +1,8 @@
 import React, { Children } from "react";
 import theme from "@/global/MainTheme";
 import { Button, Checkbox, Grid } from "@mui/material";
-import styles from "@/styles/Layout.module.css";
+
+import styles from "../../styles/Layout.module.css";
 import { Navbar } from "../Navbar";
 
 import { ThemeProvider, createTheme } from "@mui/material/styles";
@@ -12,19 +13,11 @@ export interface LayoutInterface {
   title?: string;
 }
 
-const Layout: React.FC<LayoutInterface> = ({
-  children,
-  route,
-  title,
-}: LayoutInterface) => {
-  const label = { inputProps: { "aria-label": "Checkbox demo" } };
-
+const Layout: React.FC<LayoutInterface> = ({ children }: LayoutInterface) => {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <Navbar />
         <Grid className={styles.app_wrapper}>{children}</Grid>
-        <Footer />
       </ThemeProvider>
     </>
   );

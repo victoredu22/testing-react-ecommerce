@@ -5,24 +5,24 @@ import {
   availableStock,
   filterBrand,
 } from "@/redux/states/products";
-import { Grid, Typography } from "@mui/material";
+import { Button, Grid, Typography } from "@mui/material";
 import { Brand } from "@/interface/brand";
 
 export interface BrandFilterInterface {
   title: string;
-  brands: Brand[];
+  items: Brand[];
 }
 
-const ProductFilter: React.FC<BrandFilterInterface> = ({ title, brands }) => {
+const ProductFilter: React.FC<BrandFilterInterface> = ({ title, items }) => {
   const dispatch = useDispatch();
   const clearFilter = () => {
     dispatch(allProductActive());
   };
-  const handleFilter = (idBrand: any) => {
+  const handleFilter = (idAction: number) => {
     if (title === "Disponibilidad") {
-      dispatch(availableStock(idBrand));
+      dispatch(availableStock({ type: idAction }));
     } else if (title === "Marcas") {
-      dispatch(filterBrand(idBrand));
+      dispatch(filterBrand(idAction));
     }
   };
 
@@ -33,23 +33,25 @@ const ProductFilter: React.FC<BrandFilterInterface> = ({ title, brands }) => {
           <Typography variant="h5" fontWeight="bold">
             {title}
           </Typography>
-          {brands != undefined &&
-            brands.map((brand, key) => (
-              <Typography
-                sx={{ cursor: "pointer" }}
+          {items != undefined &&
+            items.map((item, key) => (
+              <Button
+                sx={{ cursor: "pointer", color: "black", display: "flex" }}
                 key={key}
-                onClick={() => handleFilter(brand.id)}
+                onClick={() => handleFilter(item.id)}
               >
-                {brand.title} ({brand.stock})
-              </Typography>
+                <Typography>{item.title}</Typography> (
+                <Typography>{item.stock}</Typography>)
+              </Button>
             ))}
-          <Typography
+          <Button
+            aria-label="button-clear-filter"
             onClick={clearFilter}
             color="primary"
             sx={{ cursor: "pointer" }}
           >
             Limpiar
-          </Typography>
+          </Button>
         </Grid>
       </Grid>
     </>

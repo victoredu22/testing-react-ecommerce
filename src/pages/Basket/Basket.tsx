@@ -13,7 +13,6 @@ export interface BasketInterface {}
 
 const Basket: React.FC<BasketInterface> = () => {
   const stateCart = useSelector((store: AppStore) => store.cart);
-
   return (
     <Layout>
       <Grid
@@ -39,7 +38,12 @@ const Basket: React.FC<BasketInterface> = () => {
                 No tienes compras en tu carrito.
               </Typography>
             </Box>
-            <Button variant="contained" component={Link} to="/">
+            <Button
+              aria-label="home-redirect"
+              variant="contained"
+              component={Link}
+              to="/"
+            >
               <AddIcon />
               Agregar nuevos productos
             </Button>

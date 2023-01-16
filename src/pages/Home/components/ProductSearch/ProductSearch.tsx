@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
+
 import { searchProduct } from "@/redux/states/products";
 
 import { useForm } from "@/hook/useForm";
@@ -25,16 +26,15 @@ const ProductSearch: React.FC<ProductSearchInterface> = () => {
   }, [values]);
 
   return (
-    <>
-      <TextField
-        fullWidth
-        name="searchText"
-        value={values.searchText}
-        onChange={handle}
-        placeholder="Buscar producto"
-        autoComplete="off"
-      />
-    </>
+    <TextField
+      fullWidth
+      name="searchText"
+      value={values.searchText}
+      onChange={handle}
+      placeholder="Buscar producto"
+      autoComplete="off"
+      arial-label="search"
+    />
   );
 };
 

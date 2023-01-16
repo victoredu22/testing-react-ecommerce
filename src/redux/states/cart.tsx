@@ -7,8 +7,8 @@ import { productSlice } from "./products";
 const initialState: Product[] = [];
 
 const initialStateCart = () => {
-  const localStorageData = localStorage.getItem("cart")
-    ? [...JSON.parse(localStorage.getItem("cart") as string)]
+  const localStorageData = getLocalStorage(LocalstorageTypes.CART)
+    ? [...JSON.parse(getLocalStorage(LocalstorageTypes.CART) as string)]
     : initialState;
 
   return localStorageData;
@@ -34,12 +34,12 @@ export const cartSlice = createSlice({
     updateStock: (state, action) => {
       return action.payload.type === "add"
         ? current(state).map((product) =>
-            product.id === action.payload.idProduct
+            product.id === action.payload.id
               ? { ...product, inCart: product.inCart + 1 }
               : { ...product }
           )
         : current(state).map((product) =>
-            product.id === action.payload.idProduct
+            product.id === action.payload.id
               ? { ...product, inCart: product.inCart - 1 }
               : { ...product }
           );

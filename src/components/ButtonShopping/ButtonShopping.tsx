@@ -5,6 +5,8 @@ import { Product } from "@/interface/product";
 import { useDispatch, useSelector } from "react-redux";
 import { addCart } from "@/redux/states/cart";
 import { AppStore } from "@/redux/store";
+import { setLocalStorage } from "@/utilities";
+import { LocalstorageTypes } from "@/models";
 
 export interface ButtonShoppingInterface {
   product: Product;
@@ -15,7 +17,7 @@ const ButtonShopping: React.FC<ButtonShoppingInterface> = (product) => {
   const stateCart = useSelector((store: AppStore) => store.cart);
 
   useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(stateCart));
+    setLocalStorage(LocalstorageTypes.CART, stateCart);
   }, [stateCart]);
 
   const handleAddCart = () => {
@@ -24,6 +26,7 @@ const ButtonShopping: React.FC<ButtonShoppingInterface> = (product) => {
 
   return (
     <Button
+      aria-label="button-handle-buy"
       onClick={handleAddCart}
       variant="outlined"
       sx={{ color: "#6c757d" }}
