@@ -43,7 +43,6 @@ export const productSlice = createSlice({
           );
     },
     allProductActive: (state) => {
-      console.log(state);
       return current(state).map((product: Product) => ({
         ...product,
         active: true,

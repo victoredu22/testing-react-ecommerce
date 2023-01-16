@@ -11,7 +11,7 @@ import { ProductDetail } from "./components/ProductDetail";
 import { ProductFilter } from "./components/ProductFilter";
 import { ProductSearch } from "./components/ProductSearch";
 
-/* import styles from "@/styles/Layout.module.css"; */
+import styles from "../../styles/Layout.module.css";
 
 export interface HomeInterface {}
 
@@ -48,7 +48,12 @@ const Home: React.FC<HomeInterface> = () => {
 
   return (
     <Layout>
-      <Grid container spacing={2} sx={{ marginTop: "20px" }}>
+      <Grid
+        container
+        className={styles.main_container}
+        spacing={2}
+        sx={{ marginTop: "20px" }}
+      >
         <Grid
           item
           sm={6}
@@ -160,6 +165,7 @@ const Home: React.FC<HomeInterface> = () => {
             <Grid item xs={12} sm={10}>
               <ProductSearch />
               <Box
+                data-testid={`item-found-product`}
                 sx={{
                   display: "flex",
                   borderTop: "1px solid silver",
@@ -170,7 +176,9 @@ const Home: React.FC<HomeInterface> = () => {
                 }}
               >
                 <Typography component="span" display="flex">
-                  <Typography fontWeight="bold">{productSearch} </Typography>{" "}
+                  <Typography data-testid="number-product" fontWeight="bold">
+                    {productSearch}{" "}
+                  </Typography>{" "}
                   Items encontrados
                 </Typography>
               </Box>

@@ -7,8 +7,8 @@ import { productSlice } from "./products";
 const initialState: Product[] = [];
 
 const initialStateCart = () => {
-  const localStorageData = localStorage.getItem("cart")
-    ? [...JSON.parse(localStorage.getItem("cart") as string)]
+  const localStorageData = getLocalStorage(LocalstorageTypes.CART)
+    ? [...JSON.parse(getLocalStorage(LocalstorageTypes.CART) as string)]
     : initialState;
 
   return localStorageData;

@@ -25,8 +25,9 @@ const Review: React.FC<ReviewInterface> = ({ cart }) => {
       <hr></hr>
       <Box display="flex" justifyContent="space-between" padding={1}>
         <Box>Subtotal: </Box>
-        <Box>
-          $<Typography>{price}</Typography>{" "}
+        <Box display="flex">
+          <Typography component="span">$</Typography>
+          <Typography>{price}</Typography>{" "}
         </Box>
       </Box>
       <hr></hr>

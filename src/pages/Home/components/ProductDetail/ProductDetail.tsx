@@ -2,9 +2,8 @@ import React from "react";
 import { Box, CardMedia, Grid, Typography } from "@mui/material";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import StarIcon from "@mui/icons-material/Star";
+import styles from "../../../../styles/Product.module.css";
 
-/* import styles from "@/styles/Product.module.css";
- */
 import { ButtonShopping } from "@/components/ButtonShopping";
 import { Product } from "@/interface/product";
 
@@ -17,6 +16,7 @@ const ProductDetail: React.FC<OfferDayInterface> = ({ type, product }) => {
   return (
     <>
       <Grid
+        data-testid={`list-element-product-${type}`}
         container
         sx={{
           display: "flex",
@@ -46,13 +46,13 @@ const ProductDetail: React.FC<OfferDayInterface> = ({ type, product }) => {
           )}
         </Grid>
         <Grid item xs={type === "activeList" ? 12 : 9} textAlign="left">
-          <Typography>
+          <Typography className={styles.productText}>
             {product.title}
             <Typography component="span" color="primary">
               .
             </Typography>
           </Typography>
-          <Typography>
+          <Typography className={styles.productText}>
             {" "}
             <Typography component="span" color="primary" fontWeight="bold">
               {product.price}
@@ -62,7 +62,7 @@ const ProductDetail: React.FC<OfferDayInterface> = ({ type, product }) => {
 
           {type === "discountList" && (
             <Box
-              data-testid="container-product"
+              data-testid="discountList-item"
               sx={{
                 display: "flex",
                 alignItems: "center",
@@ -71,11 +71,13 @@ const ProductDetail: React.FC<OfferDayInterface> = ({ type, product }) => {
               }}
             >
               <LocalShippingIcon />
-              <Typography>Envio gratis</Typography>
+              <Typography className={styles.productText}>
+                Envio gratis
+              </Typography>
             </Box>
           )}
 
-          <Typography>
+          <Typography className={styles.productText}>
             <StarIcon /> <StarIcon /> <StarIcon />
           </Typography>
           <ButtonShopping product={product} />

@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 
-import { searchProduct } from "../../../../redux/states/products";
+import { searchProduct } from "@/redux/states/products";
 
-import { useForm } from "../../../../hook/useForm";
+import { useForm } from "@/hook/useForm";
 import { TextField } from "@mui/material";
 export interface ProductSearchInterface {}
 

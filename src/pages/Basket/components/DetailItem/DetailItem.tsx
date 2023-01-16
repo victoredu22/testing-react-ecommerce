@@ -9,6 +9,8 @@ import MinimizeIcon from "@mui/icons-material/Minimize";
 import AddIcon from "@mui/icons-material/Add";
 
 import { Product } from "@/interface/product";
+import { LocalstorageTypes } from "@/models";
+import { getLocalStorage, setLocalStorage } from "@/utilities";
 export interface DetailsItemInterface {
   product: Product;
 }
@@ -25,23 +27,24 @@ const DetailsItem: React.FC<DetailsItemInterface> = ({ product }) => {
 
     dispatch(updateStock({ type, id: product.id }));
 
-    if (inCart > 0) {
+    if (stockIncart > 0) {
       const dataLocal = stateCart.map((item: Product) =>
-        item.id === product.id ? { ...item, inCart: inCart } : { ...item }
+        item.id === product.id ? { ...item, inCart: stockIncart } : { ...item }
       );
-      localStorage.setItem("cart", JSON.stringify(dataLocal));
+
+      setLocalStorage(LocalstorageTypes.CART, dataLocal);
       return;
     }
 
-    const itemsLocal = localStorage.getItem("cart")
-      ? JSON.parse(localStorage.getItem("cart") as "String")
+    const itemsLocal = getLocalStorage(LocalstorageTypes.CART)
+      ? JSON.parse(getLocalStorage(LocalstorageTypes.CART) as "String")
       : [];
 
     const dataLocal = itemsLocal.filter(
       (item: Product) => item.id != product.id
     );
 
-    localStorage.setItem("cart", JSON.stringify(dataLocal));
+    setLocalStorage(LocalstorageTypes.CART, dataLocal);
     dispatch(deleteCart(product.id));
   };
 

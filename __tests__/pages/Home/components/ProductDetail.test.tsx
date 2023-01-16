@@ -16,7 +16,7 @@ describe("Pruebas en product detail", () => {
       </Provider>
     );
 
-    expect(screen.getByTestId("container-product")).toHaveStyle(
+    expect(screen.getByTestId("discountList-item")).toHaveStyle(
       `alignItems: center`
     );
     expect(screen.getAllByText(initialState[0].title)).toBeTruthy();
